@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Projects</title>
+
+    <!-- Favicons-->
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <!-- Favicons-->
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <!-- For iPhone -->
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <!-- For Windows Phone -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- CORE CSS-->    
+    <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="/css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+	  <link href="js/plugins/sweetalert/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
+    
+  </head>
+  <body>
+  <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color" style="background-color:#546e7a !important">
+                <div class="nav-wrapper">
+                    <ul class="left">                      
+                      <li><h5 class="logo-wrapper"><a href="http://35.162.23.96:3000/projects" class="brand-logo darken-1"><img src="images/logow2.png" alt="logo"> <span class="logo-text"></span></h5></li>
+                    </ul>
+					
+										
+                    <!-- translation-button -->
+                   
+                    <!-- notifications-dropdown -->
+                   
+                </div>
+				
+            </nav>
+        </div>
+        <!-- end header nav-->
+    </header>
+	
+   					<div class="row">
+					</div>
+						
+						<div class="row">
+						<% var c=0; while(project_names_array[c]){ %>
+						
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content blue white-text">
+                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i>project</p>
+                                        <h4 class="card-stats-number"><a href="http://35.162.23.96:3000/things?project_name=<%= project_names_array[c] %>"><%= project_names_array[c] %></a></h4>
+                                        
+                                    </div>
+                                    <div class="card-action blue darken-2">
+                                        <div id="clients-bar" class="center-align"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% c++;} %>
+							 
+							
+							
+							  
+								<div id="addP" class="modal">
+									  <div class="modal-content">
+											<div class="input-field col s6">
+											<form class="col s12" action="http://35.162.23.96:3000/addproject" method="get">
+											<div class="row">
+											  <div class="input-field col s12">
+												<input id="project_name" name="project_name" type="text" style="color:#000 !important">
+												<label for="project_name">Project Name</label>
+											  </div>
+											</div>
+											
+											<div class="row">
+											  
+											  <div class="row">
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right btn-successproject" type="submit">Add
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+											  </div>
+											</div>
+										  </form>
+									</div>
+									</div>
+												
+           </div>
+							<div id="removeP" class="modal">
+											  <div class="modal-content">
+
+											  <div class="col s12 m8 l9">
+												  <form action="http://35.162.23.96:3000/removeproject" method="get">
+													<% var a=0; while(project_names_array[a]){ %>
+						
+													<p>
+													  <input type="checkbox" name="selected_project" id="<%= project_names_array[a]%>" value="<%= project_names_array[a] %>" />
+													  <label for="<%= project_names_array[a] %>"><%= project_names_array[a] %></label>
+													</p>
+													<% a++;} %>
+												  
+												</div>
+												<div class="row">
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right" type="submit">Remove
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+											  </div>
+											  </form>
+											</div>
+														
+								</div>
+								
+							
+											
+			<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red modal-trigger tooltipped offset-s4 offset-l1" data-position="left" data-delay="50" data-tooltip="Add a project" href="#addP">
+    <i class="mdi-content-add"></i>
+  </a>
+  <ul>
+  <li><a class="modal-trigger btn-large btn-floating yellow tooltipped offset-s4 offset-l1" data-position="left" data-delay="50" data-tooltip="Remove project" href="#removeP"><i class="large mdi-content-clear"></i></a>
+  </li>
+ 
+  
+</ul>
+
+                        </div>
+				<% project_names_array = null; %>
+        
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<!--sweetalert -->
+    <script type="text/javascript" src="js/plugins/sweetalert/sweetalert.min.js"></script> 
+    <!-- chartist -->
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/custom-script.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function(){
+        "use strict";
+
+		$('.btn-successproject').click(function(){
+        	swal("Project added", "", "success");
+        });
+		
+		 });
+    </script>
+    
+  </body>
+</html>

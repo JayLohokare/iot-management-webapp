@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+     <title>DataBucket</title>
+
+   
+
+    <!-- CORE CSS-->    
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+		  <link href="js/plugins/sweetalert/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
+
+
+</head>
+
+<body>
+    
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            <div class="wrapper">
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav" style="margin-top:-200px; height:100vh;" >
+                <ul id="slide-out" class="side-nav fixed leftside-navigation" style="margin-top:-80px">
+                <li class=" user-details" style="">
+                <div class="row" style="height:140px; ">
+                    
+                    <div style="padding-top:60px;" class="col col s8 m8 l8">
+                      
+                    </div>
+                </div>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/things?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Things</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/rules?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Rules</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/alert?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Alerts</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/bucket?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Data Bucket</a>
+                </li>
+				<li class="bold"><a href="http://35.162.23.96:3000/timerule?project_name=<%=project_name_selected%>" class="waves-effect waves-blue"><i class="mdi-action-dashboard"></i>Time Rule</a>
+                </li>
+				<li class="bold active"><a href="http://35.162.23.96:3000/visualize?project_name=<%=project_name_selected%>" class="waves-effect waves-blue"><i class="mdi-action-dashboard"></i>Time Rule</a>
+                </li>
+            </ul>
+            </aside>
+			
+            <!-- END LEFT SIDEBAR NAV-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- START CONTENT -->
+			<div>
+				<div class="row" style="padding:10px; margin-bottom:0px">
+				<div class="chip">
+					
+					<%=project_name_selected%>
+				</div>
+				</div>
+			            </div>
+						<form class="col s12" action="http://35.162.23.96:3000/plotgraph" method="get">
+											
+						<div class="row">
+						
+						<div class="col s12 m8 l4">
+												  <div class="input-field col s12 l12">
+													<label for="topic_selected"></label>
+													<select name="topic_selected">
+													  <option id="topic_selected" style="color:#000 !important" value="" disabled selected>Choose the type</option>
+													  <% var w=0; while(kafka_topic_array[w]){ %>
+													  
+													  <option id="type" style="color:#000 !important" value="<%=kafka_topic_array[w]%>"><%=kafka_topic_array[w]%></option>
+													  <% w++;} %>
+													</select>
+												  </div>
+												</div>
+												 <input type="hidden" name="project_name" value="<%=project_name_selected%>">
+												 <div class="input-field col s12 l3">
+													<input id="parameter" name="parameter" type="text" style="color:#000 !important">
+													<label for="parameter">Parameter</label>
+												</div>
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right" type="submit">Plot
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+							</div>
+							</form>
+						
+					
+				
+		
+			</div>
+		
+		
+		</div>
+    </div>
+    <!-- END MAIN -->
+
+
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START FOOTER --
+    <footer class="page-footer absolute">
+        
+        <div class="footer-copyright" style="background-color:#546e7a !important">
+            <div class="container">
+                Copyright © 2017 <a class="grey-text text-lighten-4" href="" target="_blank">SkylineLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://www.skylinelabs.in/">SkylineLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    -- END FOOTER -->
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+  <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	 <!--sweetalert -->
+    <script type="text/javascript" src="js/plugins/sweetalert/sweetalert.min.js"></script> 
+    <!-- chartist -->
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/custom-script.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function(){
+        "use strict";
+
+		$('.btn-successthing').click(function(){
+        	swal("Bucket added", "", "success");
+        });
+		
+		$('.btn-successtype').click(function(){
+        	swal("Type added", "", "success");
+        });
+		 });
+    </script>
+
+</body>
+
+</html>

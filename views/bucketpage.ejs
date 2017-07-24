@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+     <title>DataBucket</title>
+
+   
+
+    <!-- CORE CSS-->    
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+		  <link href="js/plugins/sweetalert/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
+
+
+</head>
+
+<body>
+    
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            <div class="wrapper">
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav" style="margin-top:-200px; height:100vh;" >
+                <ul id="slide-out" class="side-nav fixed leftside-navigation" style="margin-top:-80px">
+                <li class=" blue" style="">
+                <div class="user-details" style="height:140px; ">
+                    
+                    <div style="padding-top:60px;" class="col col s8 m8 l8">
+                      
+                       
+                    </div>
+                </div>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/things?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Things</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/rules?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Rules</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/alert?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Alerts</a>
+                </li>
+                <li class="bold active"><a href="http://35.162.23.96:3000/bucket?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Data Bucket</a>
+                </li>
+				<li class="bold"><a href="http://35.162.23.96:3000/timerule?project_name=<%=project_name_selected%>" class="waves-effect waves-blue"><i class="mdi-action-dashboard"></i>Time Rule</a>
+                </li>
+				<li class="bold"><a href="http://35.162.23.96:3000/visualize?project_name=<%=project_name_selected%>" class="waves-effect waves-blue"><i class="mdi-action-dashboard"></i>Visualize</a>
+                </li>
+            </ul>
+            </aside>
+			
+            <!-- END LEFT SIDEBAR NAV-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- START CONTENT -->
+			<div>
+				<div class="row" style="padding:10px; margin-bottom:0px">
+				<div class="chip">
+					
+					<%=project_name_selected%>
+				</div>
+				</div>
+				<div class="row">
+						<% var c=0; while(bucket_array[c]){ %>
+						
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content blue-text">
+                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i>Data Bucket</p>
+                                        <h4 class="card-stats-number"><%= bucket_array[c] %></a></h4>
+                                        
+                                    </div>
+                                    <div class="card-action grey">
+                                       <%=bucket_thing_array[c]%>
+                                    </div>
+                                </div>
+                            </div>
+                            <% c++;} %>
+							
+							
+							
+							
+							
+							  
+							
+                        </div>
+						
+						<div id="addB" class="modal">
+									  <div class="modal-content">
+											<div class="input-field col s6">
+											<form class="col s12" action="http://35.162.23.96:3000/addBucket" method="get">
+											<div class="row">
+											<div class="input-field col s12">
+												<input id="bucket_name" name="bucket_name" type="text" style="color:#000 !important">
+												<label for="bucket_name">Bucket Name</label>
+											  </div>
+											  
+											  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                                          <script>
+                                             $(document).ready(function () {
+                                             	$('.group').hide();
+                                             	$('#iot').show();
+                                             	$('#topictype').change(function () {
+                                             	$('.group').hide();
+                                             	$('#'+$(this).val()).show();
+                                             	})
+                                             	});
+                                          </script>	
+										  <div class="row">
+                                          <h5> Topic Selection </h5></div>
+                                          
+                                          <div class="row s12">
+                                             <div class="col s4">
+                                                <select name="topictype" id="topictype">
+                                                   <option id="topictype" value="iot" >iot</option>
+                                                   <option id="topictype" value="state">state</option>
+                                                   <option id="topictype" value="alert">alert</option>
+                                                </select>
+                                             </div>
+                                             <div class="input-field col s4">
+                                                <input value="<%=project_name_selected%>" name="project" id="<%=project_name_selected%>" style="color:#000 !important" type="text" class="validate">
+                                                <label for="<%=project_name_selected%>"></label>
+                                             </div>
+                                             <div class="col s4">
+                                                <select name="thing">
+                                                   <option id="thing" style="color:#000 !important" value="" disabled selected>Choose the thing</option>
+                                                   <% var w=0; while(thing_name_array[w]){ %>
+                                                   <option id="thing" style="color:#000 !important" value="<%=thing_name_array[w]%>"><%=thing_name_array[w]%></option>
+                                                   <% w++;} %>
+                                                </select>
+                                             </div>
+                                             <div class="col s4">
+                                                <div id="iot" class="group">
+                                                   <div class="input-field col s12">
+                                                      <input id="last_part" name="last_part" type="text" style="color:#000 !important">
+                                                      <label for="last_part">name</label>
+                                                   </div>
+                                                </div>
+                                                <div id="state" class="group">
+                                                   <div class="input-field col s12">
+                                                      <input id="last_part2" value="update" name="last_part2" type="text" style="color:#000 !important">
+                                                      <label for="last_part2">name</label>
+                                                   </div>
+                                                </div>
+                                                <div id="alert" class="group"> 
+                                                </div>
+                                             </div>
+                                          </div>
+											
+												
+											
+											</div>
+											
+											<div class="row">
+											  
+											  <div class="row">
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right btn-successthing" type="submit">Add
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+											  </div>
+											</div>
+										  </form>
+									</div>
+									</div>
+												
+							</div>
+		   
+						
+						
+						<div id="removeB" class="modal">
+											  <div class="modal-content">
+
+											  <div class="col s12 m8 l9">
+												  <form action="http://35.162.23.96:3000/removeBucket" method="get">
+												  
+													<div class="input-field col s12">
+													  <input value="<%=project_name_selected%>" name="project" id="<%=project_name_selected%>" style="color:#000 !important" type="text" class="validate">
+													  <label for="<%=project_name_selected%>">Project Name</label>
+													</div>
+													<% var a=0; while(bucket_array[a]){ %>
+						
+													<p>
+													  <input type="checkbox" name="selected_bucket" id="<%= bucket_array[a]%>" value="<%= bucket_array[a] %>" />
+													  <label for="<%= bucket_array[a] %>"><%= bucket_array[a] %></label>
+													</p>
+													<% a++;} %>
+												  
+												</div>
+												<div class="row">
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right" type="submit">Remove
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+											  </div>
+											  </form>
+											</div>
+														
+								</div>
+				<% bucket_array = null; %>
+				
+			<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red modal-trigger tooltipped offset-s4 offset-l1" data-position="left" data-delay="50" data-tooltip="Add Bucket" href="#addB">
+    <i class="mdi-content-add"></i>
+  </a>
+  <ul>
+  <li><a class="modal-trigger btn-floating btn-large yellow tooltipped offset-s4 offset-l1" data-position="left" data-delay="50" data-tooltip="Remove bucket" href="#removeB"><i class="large mdi-content-clear"></i></a>
+  </li>
+  
+  
+</ul>
+</div>
+				
+			
+			</div>
+		
+		
+		</div>
+    </div>
+    <!-- END MAIN -->
+
+
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START FOOTER --
+    <footer class="page-footer absolute">
+        
+        <div class="footer-copyright" style="background-color:#546e7a !important">
+            <div class="container">
+                Copyright © 2017 <a class="grey-text text-lighten-4" href="" target="_blank">SkylineLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://www.skylinelabs.in/">SkylineLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    -- END FOOTER -->
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+  <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	 <!--sweetalert -->
+    <script type="text/javascript" src="js/plugins/sweetalert/sweetalert.min.js"></script> 
+    <!-- chartist -->
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/custom-script.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function(){
+        "use strict";
+
+		$('.btn-successthing').click(function(){
+        	swal("Bucket added", "", "success");
+        });
+		
+		$('.btn-successtype').click(function(){
+        	swal("Type added", "", "success");
+        });
+		 });
+    </script>
+
+</body>
+
+</html>

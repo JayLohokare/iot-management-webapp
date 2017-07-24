@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+     <title>DataBucket</title>
+
+   
+
+    <!-- CORE CSS-->    
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+		  <link href="js/plugins/sweetalert/sweetalert.css" type="text/css" rel="stylesheet" media="screen,projection">
+  
+
+
+</head>
+
+<body>
+    <!-- Start Page Loading -->
+   
+    <!-- End Page Loading -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    
+    <!-- END HEADER -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav" style="margin-top:-200px; height:100vh;" >
+                <ul id="slide-out" class="side-nav fixed leftside-navigation" style="margin-top:-80px">
+                <li class="user-details" style="">
+                <div class="row" style="height:140px; ">
+                    
+                    <div style="padding-top:60px;" class="col col s8 m8 l8">
+                       
+                    </div>
+                </div>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/things?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Things</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/rules?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Rules</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/alert?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Alerts</a>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/bucket?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i>Data Bucket</a>
+                </li>
+				<li class="bold active"><a href="http://35.162.23.96:3000/timerule?project_name=<%=project_name_selected%>" class="waves-effect waves-blue"><i class="mdi-action-dashboard"></i>Time Rule</a>
+                </li>
+				<li class="bold"><a href="http://35.162.23.96:3000/visualize?project_name=<%=project_name_selected%>" class="waves-effect waves-blue"><i class="mdi-action-dashboard"></i>Visualize</a>
+                </li>
+            </ul>
+            </aside>
+			
+            <!-- END LEFT SIDEBAR NAV-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- START CONTENT -->
+			<div>
+				<div class="row" style="padding:10px; margin-bottom:0px">
+				<div class="chip">
+					
+					<%=project_name_selected%>
+				</div>
+				</div>
+				<div class="row">
+				
+					  <div class="col s12 m6 l6">
+						zero
+						<ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array0[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array0[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array0[c]%><br>
+							Message - <%=message_array0[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				  <div class="row">
+				  
+					  <div class="col s12 m6 l6">one
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array1[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array1[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array1[c]%><br>
+							Message - <%=message_array1[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Two
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array2[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array2[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array2[c]%><br>
+							Message - <%=message_array2[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				 <div class="row">
+					  <div class="col s12 m6 l6">Three
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array3[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array3[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array3[c]%><br>
+							Message - <%=message_array3[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Four
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array4[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array4[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array4[c]%><br>
+							Message - <%=message_array4[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Five
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array5[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array5[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array5[c]%><br>
+							Message - <%=message_array5[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+					 <div class="row">
+					  <div class="col s12 m6 l6">SIx
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array6[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array6[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array6[c]%><br>
+							Message - <%=message_array6[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>		
+				   <div class="row">
+					  <div class="col s12 m6 l6">Seven
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array7[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array7[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array7[c]%><br>
+							Message - <%=message_array7[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">EIght
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array8[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array8[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array8[c]%><br>
+							Message - <%=message_array8[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Nine
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array9[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array9[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array9[c]%><br>
+							Message - <%=message_array9[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Ten
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array10[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array10[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array10[c]%><br>
+							Message - <%=message_array10[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Eleven
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array11[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array11[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array11[c]%><br>
+							Message - <%=message_array11[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Twelve
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array12[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array12[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array12[c]%><br>
+							Message - <%=message_array12[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Thirteen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array13[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array13[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array13[c]%><br>
+							Message - <%=message_array13[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Fourteen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array14[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array14[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array14[c]%><br>
+							Message - <%=message_array14[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Fifteen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array15[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array15[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array15[c]%><br>
+							Message - <%=message_array15[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Sixteen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array16[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array16[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array16[c]%><br>
+							Message - <%=message_array16[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Seventeen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array17[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array17[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array17[c]%><br>
+							Message - <%=message_array17[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Eighteen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array18[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array18[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array18[c]%><br>
+							Message - <%=message_array18[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Nineteen
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array19[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array19[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array19[c]%><br>
+							Message - <%=message_array19[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Twenty
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array20[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array20[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array20[c]%><br>
+							Message - <%=message_array20[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Twelve one
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array21[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array21[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array21[c]%><br>
+							Message - <%=message_array21[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Twenty Two
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array22[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array22[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array22[c]%><br>
+							Message - <%=message_array22[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				   <div class="row">
+					  <div class="col s12 m6 l6">Twenty Three
+                                <ul class="collapsible popout" data-collapsible="accordion">
+							<% var c=0; while(rule_names_array23[c]){ %>
+								
+						 <li>
+							<div class="collapsible-header "><%=rule_names_array23[c]%></div>
+							<div class="collapsible-body">
+							<p>
+							Republish Topic - <%=republish_topic_array23[c]%><br>
+							Message - <%=message_array23[c]%><br>
+							
+							</p>
+							</div>
+						  </li>
+						   <% c++;} %>
+						  </ul>
+							 
+						  </div>
+							
+				  </div>
+				  </div>
+							 <div style="color:#000 !important" id="addB" class="modal">
+                              <div class="modal-content">
+                                 <div class="input-field col s12">
+                                    <form class="col s12" action="http://35.162.23.96:3000/addtimerule" method="get">
+                                       <div class="row">
+                                          
+                                          <h5> Time Rule Name </h5>
+                                          <div class="input-field col s6">
+                                             <input id="rule_name" name="rule_name" type="text" style="color:#000 !important">
+                                             <label for="rule_name">Rule name</label>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <h5>Hour of the day</h5>
+                                          
+                                          <div class="input-field col s6">
+                                             
+                                                <select name="hour" id="hour">
+                                                   <option id="hour" value="zero" >0</option>
+                                                   <option id="hour" value="one">1</option>
+                                                   <option id="hour" value="two">2</option>
+                                                   <option id="hour" value="three">3</option>
+                                                   <option id="hour" value="four">4</option>
+                                                   <option id="hour" value="five">5</option>
+                                                   <option id="hour" value="six">6</option>
+                                                   <option id="hour" value="seven">7</option>
+                                                   <option id="hour" value="eight">8</option>
+                                                   <option id="hour" value="nine">9</option>
+                                                   <option id="hour" value="ten">10</option>
+                                                   <option id="hour" value="eleven">11</option>
+                                                   <option id="hour" value="twelve">12</option>
+                                                   <option id="hour" value="thirteen">13</option>
+                                                   <option id="hour" value="fourteen">14</option>
+                                                   <option id="hour" value="fifteen">15</option>
+                                                   <option id="hour" value="sixteen">16</option>
+                                                   <option id="hour" value="seventeen">17</option>
+                                                   <option id="hour" value="eighteen">18</option>
+                                                   <option id="hour" value="nineteen">19</option>
+                                                   <option id="hour" value="twenty">20</option>
+                                                   <option id="hour" value="twentyone">21</option>
+                                                   <option id="hour" value="twentytwo">22</option>
+                                                   <option id="hour" value="twentythree">23</option>
+                                                  
+                                                </select>
+                                            
+                                          </div>
+										 </div> 
+										  <div class="input-field col s6">
+                                             <input id="message" name="message" type="text" style="color:#000 !important">
+                                             <label for="message">Message</label>
+                                          </div>
+										 
+										  
+                                          <br>
+                                          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                                         
+                                         
+                                          <div class="row">
+                                             <h5>Republish Topic</h5>
+                                           
+                                          </div>
+                                         
+                                          
+                                             <div id="mqtt" class="group2 row">
+                                               
+                                                <div id="our_platform" class="group3 row">
+                                                  
+                                                   <script>
+                                                      $(document).ready(function () {
+                                                      	$('.group4').hide();
+                                                      	$('#iot').show();
+                                                      	$('#topictype').change(function () {
+                                                      	$('.group4').hide();
+                                                      	$('#'+$(this).val()).show();
+                                                      	})
+                                                      	});
+                                                   </script>
+                                                   <div class="row s12">
+                                                      <div class="col s4">
+                                                         <select name="topictype" id="topictype">
+                                                            <option id="topictype" value="iot" >iot</option>
+                                                            <option id="topictype" value="state">state</option>
+                                                            <option id="topictype" value="alert">alert</option>
+                                                         </select>
+                                                      </div>
+                                                      <div class="input-field col s4">
+                                                         <input value="<%=project_name_selected%>" name="project" id="<%=project_name_selected%>" style="color:#000 !important" type="text" class="validate">
+                                                         <label for="<%=project_name_selected%>"></label>
+                                                      </div>
+                                                      <div class="col s4 row">
+                                                         <select name="thing">
+                                                            <option id="thing" style="color:#000 !important" value="" disabled selected>Choose the thing</option>
+                                                            <% var w=0; while(thing_array[w]){ %>
+                                                            <option id="thing" style="color:#000 !important" value="<%=thing_array[w]%>"><%=thing_array[w]%></option>
+                                                            <% w++;} %>
+                                                         </select>
+                                                      </div>
+                                                      <div class="col s4">
+                                                         <div id="iot" class="group4">
+                                                            <div class="input-field col s12">
+                                                               <input id="last_part" name="last_part" type="text" style="color:#000 !important">
+                                                               <label for="last_part">name</label>
+                                                            </div>
+                                                         </div>
+                                                         <div id="state" class="group4">
+                                                            <div class="input-field col s12">
+                                                               <input id="last_part2" value="update" name="last_part2" type="text" style="color:#000 !important">
+                                                               <label for="last_part2">name</label>
+                                                            </div>
+                                                         </div>
+                                                         <div id="alert" class="group4"> 
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                               
+                                             </div>
+											
+                                       </div>
+                                       <div class="row">
+                                          <div class="row">
+                                             <div class="input-field col s12">
+                                                <button class="btn btn-successrule cyan waves-effect waves-light right" type="submit">Add
+                                                <i class="mdi-content-send right"></i>
+                                                </button>
+												
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </form>
+                                 </div>
+                              </div>
+						
+				
+						<div id="removeB" class="modal">
+											  <div class="modal-content">
+
+											  <div class="col s12 m8 l9">
+												  <form action="http://35.162.23.96:3000/removetimerule" method="get">
+												  
+													<div class="input-field col s12">
+													  <input value="<%=project_name_selected%>" name="project" id="<%=project_name_selected%>" style="color:#000 !important" type="text" class="validate">
+													  <label for="<%=project_name_selected%>">Project Name</label>
+													</div>
+													
+												  
+												</div>
+												<div class="row">
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right" type="submit">Remove
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+											  </div>
+											  </form>
+											</div>
+														
+								</div>
+				
+				
+			<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red modal-trigger tooltipped offset-s4 offset-l1" data-position="left" data-delay="50" data-tooltip="Add Bucket" href="#addB">
+    <i class="mdi-content-add"></i>
+  </a>
+  <ul>
+  <li><a class="modal-trigger btn-floating btn-large yellow tooltipped offset-s4 offset-l1" data-position="left" data-delay="50" data-tooltip="Remove bucket" href="#removeB"><i class="large mdi-content-clear"></i></a>
+  </li>
+  
+  
+</ul>
+</div>
+				
+			
+			</div>
+		
+		
+		</div>
+    </div>
+    <!-- END MAIN -->
+
+
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START FOOTER --
+    <footer class="page-footer absolute">
+        
+        <div class="footer-copyright" style="background-color:#546e7a !important">
+            <div class="container">
+                Copyright © 2017 <a class="grey-text text-lighten-4" href="" target="_blank">SkylineLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://www.skylinelabs.in/">SkylineLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    -- END FOOTER -->
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+  <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	 <!--sweetalert -->
+    <script type="text/javascript" src="js/plugins/sweetalert/sweetalert.min.js"></script> 
+    <!-- chartist -->
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/custom-script.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function(){
+        "use strict";
+
+		$('.btn-successthing').click(function(){
+        	swal("Bucket added", "", "success");
+        });
+		
+		$('.btn-successtype').click(function(){
+        	swal("Type added", "", "success");
+        });
+		 });
+    </script>
+
+</body>
+
+</html>

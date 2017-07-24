@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+     <title>rules</title>
+
+   
+
+    <!-- CORE CSS-->    
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+    <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+    <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+</head>
+
+<body>
+    <!-- Start Page Loading -->
+   
+    <!-- End Page Loading -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START HEADER -->
+    <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <ul class="left">                      
+                      <li><h1 class="logo-wrapper"><a href="index.html" class="brand-logo darken-1"><img src="images/logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1></li>
+                    </ul>
+                   
+                   
+               
+                    
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+    </header>
+    <!-- END HEADER -->
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START MAIN -->
+    <div id="main">
+        <!-- START WRAPPER -->
+        <div class="wrapper">
+
+            <!-- START LEFT SIDEBAR NAV-->
+            <aside id="left-sidebar-nav">
+                <ul id="slide-out" class="side-nav fixed leftside-navigation">
+                <li class="user-details cyan darken-2">
+                <div class="row">
+                    <div class="col col s4 m4 l4">
+                        <img src="images/ava.jpg" alt="" class="circle responsive-img valign profile-image">
+                    </div>
+                    <div class="col col s8 m8 l8">
+                       
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Ajit Rajurkar<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                        <p class="user-roal">Administrator</p>
+                    </div>
+                </div>
+                </li>
+                <li class="bold"><a href="http://35.162.23.96:3000/things?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Things</a>
+                </li>
+                <li class="bold active"><a href="http://35.162.23.96:3000/rules?project_name=<%=project_name_selected%>" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Rules</a>
+                </li>
+                <li class="bold"><a href="" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Alerts</a>
+                </li>
+                
+            </ul>
+            </aside>
+			
+            <!-- END LEFT SIDEBAR NAV-->
+
+            <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+            <!-- START CONTENT -->
+			<div>
+				
+				<div class="row">
+						     <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-content  blue white-text">
+                                        <p class="card-stats-title"><i class="mdi-social-group-add"></i></p>
+                                        <h4 class="card-stats-number"><a class="modal-trigger" href="#addRule">+ADD Rule+</a></h4>
+                                        
+										
+								<div style="color:#000 !important" id="addRule" class="modal">
+									  <div class="modal-content">
+											<div class="input-field col s12">
+											<form class="col s12" action="http://35.162.23.96:3000/addRule" method="get">
+												<div class="row">
+												//////////
+												<h5> Rule Name </h5>
+												<div class="input-field col s6">
+																<input id="rule_name" name="rule_name" type="text" style="color:#000 !important">
+																<label for="rule_name">Rule name</label>
+															  </div>
+												</div>			  
+												 <div class="row">
+												<h5> SQL Query</h5>
+												 <div class="input-field col s6">
+																<input id="parameter" name="parameter" type="text" style="color:#000 !important">
+																<label for="parameter">Parameter</label>
+															  </div>
+												 <div class="input-field col s6">
+																<input id="condition" name="condition" type="text" style="color:#000 !important">
+																<label for="condition">Condition</label>
+															  </div> 		  
+												
+												<br>
+												<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+												<script>
+												$(document).ready(function () {
+													$('.group').hide();
+													$('#iot').show();
+													$('#topictype').change(function () {
+													$('.group').hide();
+													$('#'+$(this).val()).show();
+													})
+													});
+												</script>	
+												<h5> Topic Selection </h5><br>
+												<div class="row s12">
+													<div class="col s4">
+													<select name="topictype" id="topictype">
+													  <option id="topictype" value="iot" >iot</option>
+													  <option id="topictype" value="state">state</option>
+													  <option id="topictype" value="alert">alert</option>
+													</select>
+													</div>
+													
+													<div class="input-field col s4">
+													  <input value="<%=project_name_selected%>" name="project" id="<%=project_name_selected%>" style="color:#000 !important" type="text" class="validate">
+													  <label for="<%=project_name_selected%>"></label>
+													</div>
+													
+													<div class="col s4">
+														
+															<select name="thing">
+															  <option id="thing" style="color:#000 !important" value="" disabled selected>Choose the thing</option>
+															  <% var w=0; while(thing_array[w]){ %>
+															  
+															  <option id="thing" style="color:#000 !important" value="<%=thing_array[w]%>"><%=thing_array[w]%></option>
+															  <% w++;} %>
+															</select>
+													</div>
+													
+													<div class="col s4">
+														<div id="iot" class="group">
+																  <div class="input-field col s12">
+																	<input id="last_part" name="last_part" type="text" style="color:#000 !important">
+																	<label for="last_part">name</label>
+																  </div>
+														</div>
+														<div id="state" class="group">
+																  <div class="input-field col s12">
+																	<input id="last_part2" value="update" name="last_part2" type="text" style="color:#000 !important">
+																	<label for="last_part2">name</label>
+																  </div>
+														</div>
+														<div id="alert" class="group"> 
+																 
+														</div>
+													</div>
+												</div>
+												
+												<div class="row">
+													<h5>Type</h5>
+													<script>
+												$(document).ready(function () {
+													$('.group2').hide();
+													$('#mongodb').show();
+													$('#dbtype').change(function () {
+													$('.group2').hide();
+													$('#'+$(this).val()).show();
+													})
+													});
+												</script>
+													<div class="col s4">
+															<select name="dbtype" id="dbtype">
+															  <option id="dbtype" value="mongodb" >mongodb</option>
+															  <option id="dbtype" value="mqtt">mqtt</option>
+															
+															</select>
+													</div>		 
+												</div>
+												<div class="row">
+													<div id="mongodb" class="group2">
+															<div class="input-field col s4">
+																<input id="mongoserver" name="mongoserver" type="text" style="color:#000 !important">
+																<label for="mongoserver">mongoserver</label>
+															  </div>
+															  <div class="input-field col s4">
+																<input id="mongodb" name="mongodb" type="text" style="color:#000 !important">
+																<label for="mongodb">mongodb</label>
+															  </div>
+															  <div class="input-field col s4">
+																<input id="mongocollection" name="mongocollection" type="text" style="color:#000 !important">
+																<label for="mongocollection">mongo collection</label>
+															  </div>
+													</div>
+													<div id="mqtt" class="group2 row">
+															<div class="input-field col s6">
+																<div class="col s8">
+																<script>
+																$(document).ready(function () {
+																	$('.group3').hide();
+																	$('#our_platform').show();
+																	$('#mqtttype').change(function () {
+																	$('.group3').hide();
+																	$('#'+$(this).val()).show();
+																	})
+																	});
+																</script>
+																<select name="mqtttype" id="mqtttype">
+																	<option id="mqtttype" value="our_platform" >republish to -</option>
+																	<option id="mqtttype" value="other_platform">other platform</option>
+																</select>
+																</div>
+															</div>
+															<div id="our_platform" class="group3 row">
+																<div class="input-field col s4">
+																	<input id="broker_ip" name="broker_ip" type="text" value="35.162.23.96"style="color:#000 !important">
+																	<label for="broker_ip">Broker IP</label>
+																</div>
+																<script>
+																$(document).ready(function () {
+																	$('.group4').hide();
+																	$('#iot2').show();
+																	$('#topictype2').change(function () {
+																	$('.group4').hide();
+																	$('#'+$(this).val()).show();
+																	})
+																	});
+																</script>
+																<div class="row s12">
+																	<div class="col s4">
+																	<select name="topictype2" id="topictype2">
+																	  <option id="topictype2" value="iot2" >iot</option>
+																	  <option id="topictype2" value="state2">state</option>
+																	  <option id="topictype2" value="alert2">alert</option>
+																	</select>
+																	</div>
+																	
+																	<div class="input-field col s4">
+																	  <input value="<%=project_name_selected%>" name="project2" id="<%=project_name_selected%>2" style="color:#000 !important" type="text" class="validate">
+																	  <label for="<%=project_name_selected%>2"></label>
+																	</div>
+																	
+																	<div class="col s4 row">
+																		
+																			<select name="thing2">
+																			  <option id="thing2" style="color:#000 !important" value="" disabled selected>Choose the thing</option>
+																			  <% var w=0; while(thing_array[w]){ %>
+																			  
+																			  <option id="thing2" style="color:#000 !important" value="<%=thing_array[w]%>"><%=thing_array[w]%></option>
+																			  <% w++;} %>
+																			</select>
+																	</div>
+																	
+																	<div class="col s4">
+																		<div id="iot2" class="group4">
+																				  <div class="input-field col s12">
+																					<input id="last_partB" name="last_partB" type="text" style="color:#000 !important">
+																					<label for="last_partB">name</label>
+																				  </div>
+																		</div>
+																		<div id="state2" class="group4">
+																				  <div class="input-field col s12">
+																					<input id="last_part2B" value="update" name="last_part2B" type="text" style="color:#000 !important">
+																					<label for="last_part2B">name</label>
+																				  </div>
+																		</div>
+																		<div id="alert2" class="group4"> 
+																				 
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div id="other_platform" class="group3">
+																<div class="input-field col s4">
+																	<input id="other_ip" name="other_ip" type="text" style="color:#000 !important">
+																	<label for="other_ip">Broker IP</label>
+																</div>
+																<div class="input-field col s4">
+																	<input id="other_topic" name="other_topic" type="text" style="color:#000 !important">
+																	<label for="other_topic">Topic</label>
+																</div>
+															</div>
+															
+													</div>
+													
+												</div>
+												
+											
+											</div>
+											
+											<div class="row">
+											  
+											  <div class="row">
+												<div class="input-field col s12">
+												  <button class="btn cyan waves-effect waves-light right" type="submit">Add
+													<i class="mdi-content-send right"></i>
+												  </button>
+												</div>
+											  </div>
+											</div>
+										  </form>
+									</div>
+									</div>
+												
+           </div>
+										
+                                    </div>
+                                    <div class="card-action  blue darken-2">
+										for this thing
+                                    </div>
+                                </div>
+                            </div>
+				</div>
+			
+			
+			
+			</div>
+		
+		
+		</div>
+    </div>
+    <!-- END MAIN -->
+
+
+
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- START FOOTER -->
+    <footer class="page-footer">
+        
+        <div class="footer-copyright">
+            <div class="container">
+                Copyright © 2017 <a class="grey-text text-lighten-4" href="" target="_blank">SkylineLabs</a> All rights reserved.
+                <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://www.skylinelabs.in/">SkylineLabs</a></span>
+            </div>
+        </div>
+    </footer>
+    <!-- END FOOTER -->
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+  <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- chartist -->
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/custom-script.js"></script>
+
+</body>
+
+</html>
