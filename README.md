@@ -14,4 +14,4 @@ Run the server by executing the following command.
 node www
 
 **This project is a sub-module of ConnectX IoT platform.**
-**Check https://github.com/SkylineLabs/ConnectX-IoT-platform for more details**
+**Refer https://github.com/SkylineLabs/ConnectX-IoT-platform for more details**
